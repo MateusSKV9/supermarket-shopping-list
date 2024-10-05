@@ -1,0 +1,151 @@
+main {
+    font-size: 1em;
+    background-color: whitesmoke;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#container {
+    background-color: white;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+#input-produtos {
+    width: 100%;
+    display: flex;
+    gap: 15px;
+}
+
+label {
+    font-size: 1.4em;
+}
+
+input {
+    padding: 4px;
+    border: 2px solid #1c1c1c;
+    border-radius: 5px;
+    transition: all .2s ease;
+}
+
+input:hover {
+    border: 2px solid red;
+}
+
+input:focus {
+    background-color: whitesmoke;
+}
+
+#container-produtos {
+    margin-top: 25px;
+    display: flex;
+    gap: 60px;
+
+}
+
+.box-produtos {
+    padding: 10px 15px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
+
+.box-produtos h2 {
+    width: 100%;
+    font-weight: 500;
+}
+
+button {
+    padding: 5px;
+    border-radius: 5px;
+    transition: all .3s ease;
+    font-weight: bold;
+    border: 1px solid black;
+    will-change: transform;
+}
+
+button:hover {
+    background-color: rgb(100, 203, 237);
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.1);
+    transform: scale(0.99);
+}
+
+ol {
+    list-style-position: inside;
+}
+
+li {
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.23);
+    padding: 10px 10px 10px 0px;
+    font-weight: bold;
+    font-size: 1em;
+    display: flex;
+}
+
+li span {
+    margin-top: 3px;
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 3px;
+    transition: all .25s ease;
+    font-weight: normal;
+}
+
+li input {
+    margin-bottom: 3px;
+}
+
+#btn-comprar:hover {
+    background-color: rgb(111, 237, 100);
+    cursor: pointer
+}
+
+.btn-excluir:hover {
+    background-color: rgb(237, 118, 100);
+    cursor: pointer
+}
+
+#btn-editar:hover {
+    background-color: rgb(100, 200, 237);
+    cursor: pointer
+}
+
+#btn-editar:hover {
+    background-color: rgb(100, 200, 237);
+    cursor: pointer
+}
+
+#btn-salvar:hover {
+    background-color: rgb(200, 100, 237);
+    cursor: pointer
+}
+
+#produtos-comprados .textSpan::after {
+    content: ' ✅';
+}
+
+@media (max-width: 1010px) {
+    ol {
+        list-style: none;
+    }
+
+    li {
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    .span-bar {
+        display: none;
+    }
+
+    #container-produtos {
+        flex-direction: column;
+    }
+
+    .box-produtos {
+        text-align: center;
+    }
+}

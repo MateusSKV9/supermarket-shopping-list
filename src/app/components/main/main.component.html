@@ -1,0 +1,71 @@
+<main>
+  <section id="container">
+    <section id="input-produtos">
+      <div id="item-input-produto">
+        <form action="#">
+          <label for="inProduto">Adicionar produto: </label>
+          <input
+            [(ngModel)]="novoItem"
+            type="text"
+            name="inProduto"
+            id="inProduto"
+            placeholder="Digite um item" maxlength="22" required
+          />
+        </form>
+      </div>
+      <button (click)="adicionarItem()" type="button">Adicionar</button>
+    </section>
+
+    <section id="container-produtos">
+      <section id="produtos-nao-comprados" class="box-produtos">
+        <h2>Produtos não comprados</h2>
+        <ol>
+          <li *ngFor="let item of itens; let i = index">
+              <div class="container-texts">
+                <span *ngIf="editIndex !== i">{{ item }}</span>
+                <input *ngIf="editIndex === i" [(ngModel)]="editedItem" class="name-item" />
+              </div>
+
+              <div class="container-btns">
+                <span class="span-bar">|</span>
+                <span *ngIf="editIndex !== i" id="btn-comprar" (click)="comprarItem(i)">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  Comprar
+                </span>
+                <span *ngIf="editIndex !== i" class="btn-excluir" (click)="excluirItem(itens, i)">
+                  <i class="fa-solid fa-trash-can"></i>
+                  Excluir
+                </span>
+                <span *ngIf="editIndex !== i" (click)="editItem(i, item)" id="btn-editar">
+                  <i class="fa-solid fa-pencil"></i>
+                  Editar
+                </span>
+                <span *ngIf="editIndex === i" (click)="saveItem(i)" id="btn-salvar">
+                  <i class="fa-solid fa-pencil"></i>
+                  Salvar
+                </span>
+                <span class="btn-excluir" *ngIf="editIndex === i" (click)="cancelarEdit()">
+                  <i class="fa-solid fa-xmark"></i>
+                  Cancelar
+                </span>
+              </div>
+          </li>
+        </ol>
+      </section>
+
+      <section id="produtos-comprados" class="box-produtos">
+        <h2>Produtos comprados</h2>
+        <ol>
+          <li *ngFor="let itemComprado of itensComprados; let i = index">
+              <span class="textSpan">{{ itemComprado }}</span>
+              <span class="span-bar">|</span>
+              <span class="btn-excluir" (click)="excluirItem(itensComprados, i)">
+                <i class="fa-solid fa-trash-can"></i>
+                Excluir
+              </span>
+          </li>
+        </ol>
+      </section>
+    </section>
+  </section>
+</main>

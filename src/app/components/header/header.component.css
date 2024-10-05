@@ -1,0 +1,16 @@
+header {
+    height: 15vh;
+    width: 100vw;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #1C1C1C;
+    color: white;
+    font-family: "Noto Sans";
+    text-transform: uppercase;
+    word-spacing: 5px;
+    padding: 10px;
+    text-shadow: 2px 2px 3px rgba(191, 191, 191, 0.578);
+}

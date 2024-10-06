@@ -17,6 +17,7 @@ main {
 #input-produtos {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     gap: 15px;
 }
 
@@ -147,6 +148,24 @@ li input {
 
     .box-produtos {
         text-align: center;
+    }
+}
+
+@media (max-width: 520px) {
+    #input-produtos {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 425px) {
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container-btns {
+        display: flex;
+        flex-wrap: wrap;
     }
 }
 

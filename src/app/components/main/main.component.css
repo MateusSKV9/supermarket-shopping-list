@@ -84,6 +84,13 @@ li {
     font-weight: bold;
     font-size: 1em;
     display: flex;
+    align-items: center;
+}
+
+.container-texts, #produtos-comprados li {
+    display: flex;
+    overflow-wrap: anywhere;
+    text-align: left;
 }
 
 li span {

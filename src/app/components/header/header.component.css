@@ -5,7 +5,7 @@ header {
     text-align: center;
     align-items: center;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
     background-color: #1C1C1C;
     color: white;
     font-family: "Noto Sans";
@@ -13,4 +13,28 @@ header {
     word-spacing: 5px;
     padding: 10px;
     text-shadow: 2px 2px 3px rgba(191, 191, 191, 0.578);
+}
+
+#container-btns {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 3px 10px;
+    border-radius: 3px;
+    transition: all .3s ease;
+    will-change: transform;
+    border: none;
+}
+
+button:nth-child(1):hover {
+    background-color: greenyellow;
+    transform: scale(1.1);
+}
+
+button:nth-child(2):hover {
+    color: white;
+    background-color: rgb(255, 89, 47);
+    transform: scale(1.1);
 }

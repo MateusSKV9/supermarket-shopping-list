@@ -2,6 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../../interfaces/product.interface';
 
+interface ShoppingListResponse {
+  'shopping-list': Product[]; 
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -11,7 +15,7 @@ export class ProductsService {
   constructor(private httpClient: HttpClient) {}
 
   getProducts() {
-    return this.httpClient.get<Product[]>(this.apiUrl);
+    return this.httpClient.get<ShoppingListResponse>(this.apiUrl);
   }
 
   getProduct(id: number) {
@@ -25,7 +29,6 @@ export class ProductsService {
   updateProduct(product: Product) {
     return this.httpClient.put<Product>(
       `${this.apiUrl}/${product.id}`,
-
       product
     );
   }

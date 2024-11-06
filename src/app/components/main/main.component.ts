@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Product } from '../../interfaces/product.interface';
 import { ProductsService } from '../../services/products/products.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-main',
@@ -20,12 +21,17 @@ export class MainComponent {
   editedItemTitle: string = '';
   originalItemTitle: string = '';
 
+  novoItem: string = '';  
+  itens: string[] = []; 
+  itensComprados: string[] = [];  
+  editedItem: string = '';  
+
   constructor(private productService: ProductsService) {}
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe({
       next: (data) => {
-        this.shoppingList = data['shopping-list']; // Assumindo que os dados estão estruturados corretamente
+        this.shoppingList = data['shopping-list'];
         console.log(data);
       },
       error: (error) => {
@@ -40,40 +46,33 @@ export class MainComponent {
   }
 
   adicionarItem() {
-    if (this.novoItemTitle.trim()) {
-      const newItem: Product = {
-        id: this.shoppingList.length + 1, // Incrementa o ID baseado na quantidade de itens
-        title: this.novoItemTitle,
-        userId: 1, // Você pode definir qual usuário está adicionando (exemplo: 1)
-        included: false,
-      };
-      this.shoppingList.push(newItem);
-      this.novoItemTitle = '';
-    } else {
-      alert('⛔[ERRO]: Insira um item válido.');
+    if (this.novoItem) {
+      this.itens.push(this.novoItem);
+      this.novoItem = '';  
     }
   }
 
-  editarItem(index: number) {
+  comprarItem(index: number) {
+    const item = this.itens.splice(index, 1)[0];  
+    this.itensComprados.push(item);  
+  }
+
+  excluirItem(list: string[], index: number) {
+    list.splice(index, 1);  
+  }
+
+  editItem(index: number, item: string) {
     this.editIndex = index;
-    this.originalItemTitle = this.shoppingList[index].title;
-    this.editedItemTitle = this.originalItemTitle;
+    this.editedItem = item;  
   }
 
   saveItem(index: number) {
-    if (this.editedItemTitle.trim()) {
-      this.shoppingList[index].title = this.editedItemTitle;
-    }
-    this.editIndex = null;
-    this.editedItemTitle = '';
+    this.itens[index] = this.editedItem; 
+    this.cancelarEdit();  
   }
 
   cancelarEdit() {
-    this.editIndex = null;
-    this.editedItemTitle = '';
-  }
-
-  excluirItem(index: number) {
-    this.shoppingList.splice(index, 1);
+    this.editIndex = null;  
+    this.editedItem = '';  
   }
 }

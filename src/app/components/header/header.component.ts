@@ -13,18 +13,18 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
   // isAuthenticated$ = this.auth.isAuthenticated$;
-  // profile$ = this.auth.user$; // Use um Observable para o perfil
+  // profile$ = this.auth.user$;
 
   constructor(
     public auth: AuthService,
     @Inject(DOCUMENT) private document: Document,
-    private router: Router // Injete o Router aqui
+    private router: Router 
   ) {}
 
   login() {
     this.auth.loginWithRedirect({
       authorizationParams: {
-        redirect_uri: `${window.location.origin}/produtos`, // Define a URL de redirecionamento
+        redirect_uri: `${window.location.origin}/produtos`, 
       },
     });
   }
